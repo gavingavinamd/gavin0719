@@ -1,0 +1,62 @@
+﻿@model Signup03.Models.SearchView
+
+@*TblSignups/Search*@
+
+
+<h2>搜尋</h2>
+<h3>活動表單搜尋</h3>
+<hr>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Search">
+            <div class="form-gruop">
+                <label class="control-label">姓名</label>
+                <input asp-for="SearchParams.SearchName" class="form-control"></input>
+            </div>
+            <div class="form-gruop">
+                <label class="control-label">手機</label>
+                <input asp-for="SearchParams.SearchMobile" class="form-control"></input>
+            </div>
+             <div class="form-gruop">
+                <input type="submit" value="搜尋送出" class="btn btn-primary"/>
+            </div>
+        </form> 
+    </div>
+</div>
+<hr>
+<table class="table">
+    <thead>
+        <tr>
+            <th>姓名</th>
+            <th>手機</th>
+            <th>email</th>
+            <th>活動項目</th>
+            <th>報名時間</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.SignupFormResult)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CMobile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CEmail)
+                </td>
+                <td>
+                    報名的活動項目
+                </td>
+                <td>
+                    報名時間
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<h3>@ViewData["Message"]</h3>
